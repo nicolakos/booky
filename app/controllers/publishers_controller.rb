@@ -1,10 +1,17 @@
 class PublishersController < ApplicationController
   def new
-    @page_title = 'Add new Author'
-    @author = Author.new
+    @page_title = 'Add new Publisher'
+    @publisher = Publisher.new
   end
 
   def create
+    @publisher = Publisher.new(publisher_params)
+    if @publisher.save
+      flash[:notice] = "Publisher Created"
+      redirect_to publishers_path
+    else
+      render 'new'
+    end
   end
 
   def update
@@ -21,4 +28,9 @@ class PublishersController < ApplicationController
 
   def show
   end
+
+  private
+    def publisher_params
+      params.require(:publisher).permit(:name)
+    end
 end
