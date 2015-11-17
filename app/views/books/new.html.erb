@@ -20,7 +20,7 @@
 
   <div class="form-group">
     <%= f.label :author  %><br/>
-    <%= f.select :author_id, Author.all.collect {|x| [x.name, x.id]},
+    <%= f.select :author_id, Author.all.collect {|x| [x.first_name + ' ' + x.last_name, x.id]},
       {:include_blank => 'Select One'}, class:'form-control'  %><br/><br/>
   </div>
 
@@ -36,8 +36,18 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :year  %><br/>
+    <%= f.text_field :year, class:'form-control'  %><br/>
+  </div>
+
+    <div class="form-group">
     <%= f.label :excerpt  %><br/>
     <%= f.text_field :excerpt, class:'form-control'  %><br/>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :coverpath  %><br/>
+    <%= f.text_field :coverpath, class:'form-control'  %><br/>
   </div>
 
   <div class="form-group">
@@ -54,6 +64,7 @@
     <%= f.label :buy  %><br/>
     <%= f.text_field :buy, class:'form-control'  %><br/>
   </div>
+
 
   <%= f.submit "Submit", class:'btn btn-primary' %>
   <%= link_to "Cancel", books_path, class:'btn btn-default' %>
