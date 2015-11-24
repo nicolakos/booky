@@ -15,15 +15,32 @@ class BooksController < ApplicationController
     else
       render 'new'
     end
+
+
   end
 
   def update
+    @book = Book.find(params[:id])
+
+    @book.update(book_params)
+
+    flash[:notice] = 'Book Added'
+
+    redirect_to books_path
   end
 
   def edit
+    @book = Book.find(params[:id])
   end
 
   def destroy
+    @book = Book.find(params[:id])
+
+    @book.destroy
+
+    flash[:notice] = 'Book Removed'
+
+    redirect_to books_path
   end
 
   def index
