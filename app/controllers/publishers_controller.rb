@@ -19,7 +19,7 @@ class PublishersController < ApplicationController
 
     @publisher.update(publisher_params)
 
-    flash[:notice] = 'publisher Added'
+    flash[:notice] = 'Publisher Added'
 
     redirect_to publishers_path
   end
@@ -33,7 +33,7 @@ class PublishersController < ApplicationController
 
     @publisher.destroy
 
-    flash[:notice] = 'publisher Removed'
+    flash[:notice] = 'Publisher Removed'
 
     redirect_to publishers_path
   end
